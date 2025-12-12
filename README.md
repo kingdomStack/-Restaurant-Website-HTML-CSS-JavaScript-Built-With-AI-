@@ -33,20 +33,20 @@ A modern, responsive website template for a fine dining French restaurant with e
 6. **Reservations Section** - Contact information and booking form
 7. **Footer** - Contact details, hours, and social links
 
+### Live Demo
+🔗 **[View Live Demo](https://kingdomstack.github.io/-Restaurant-Website-HTML-CSS-JavaScript-Built-With-AI-/)** 🔗
+
 ## 🚀 Quick Start
-
-1. **View Live Demo**: Check out the live version at [https://kingdomstack.github.io/-Restaurant-Website-HTML-CSS-JavaScript-Built-With-AI-/](https://kingdomstack.github.io/-Restaurant-Website-HTML-CSS-JavaScript-Built-With-AI-/)
-
-2. **Clone or Download**
+1. **Clone or Download**
    ```bash
    git clone [repository-url]
    ```
    or download the ZIP file
 
-3. **Open the File**
+2. **Open the File**
    Simply open `restaurant-website-template.html` in any modern web browser.
 
-4. **No Dependencies Required**
+3. **No Dependencies Required**
    - All CSS is included in the `<style>` tag
    - All JavaScript is included in the `<script>` tag
    - External resources are loaded via CDN (Font Awesome, Google Fonts)
