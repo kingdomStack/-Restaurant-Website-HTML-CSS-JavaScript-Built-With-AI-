@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élysée | Modern French Cuisine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-gold: #c9a96e;
+            --accent-light: #f5f5f5;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+            --transition: all 0.3s ease;
+            --section-padding: 5rem 2rem;
+            --border-radius: 4px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            background-color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+        }
+
+        section {
+            padding: var(--section-padding);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-gold);
+            padding: 12px 30px;
+            border: 1px solid var(--accent-gold);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .btn-filled {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .btn-filled:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* Navigation Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 1rem 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.4)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: scale(1.1);
+            animation: zoomEffect 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes zoomEffect {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--secondary-dark);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--primary-dark);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu-tab.active {
+            color: var(--accent-gold);
+        }
+
+        .menu-tab.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-item {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-price {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        /* Chef Section */
+        .chef {
+            background-color: var(--secondary-dark);
+        }
+
+        .chef-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .chef-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .chef-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .chef-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .chef-text h2 {
+            text-align: left;
+        }
+
+        .chef-text h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .chef-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--primary-dark);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-nav button {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0 1rem;
+        }
+
+        /* Reservations Section */
+        .reservations {
+            background-color: var(--secondary-dark);
+        }
+
+        .reservation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .reservation-info h2 {
+            text-align: left;
+        }
+
+        .reservation-info h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-gold);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .reservation-form {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .form-success {
+            background-color: rgba(46, 125, 50, 0.2);
+            border: 1px solid #2e7d32;
+            color: #a5d6a7;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050505;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: var(--text-gray);
+        }
+
+        .footer-links h3, .footer-hours h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content, .chef-content, .reservation-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-text h2, .chef-text h2, .reservation-info h2 {
+                text-align: center;
+            }
+            
+            .about-text h2:after, .chef-text h2:after, .reservation-info h2:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --section-padding: 3rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .reservation-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">Élysée</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#chef">Chef</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Élysée</h1>
+            <p>Modern French cuisine reimagined through a contemporary lens. An intimate dining experience where tradition meets innovation.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn">View Our Menu</a>
+                <a href="#reservations" class="btn btn-filled">Book a Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Élysée Restaurant Interior">
+                </div>
+                <div class="about-text">
+                    <h2>Our Philosophy</h2>
+                    <p>At Élysée, we believe dining is more than sustenance—it is an experience that engages all senses. Our philosophy is rooted in honoring French culinary traditions while embracing modern techniques and global influences.</p>
+                    <p>Executive Chef Laurent Dubois and his team meticulously source ingredients from local purveyors and sustainable farms, ensuring each dish tells a story of quality, seasonality, and respect for nature.</p>
+                    <p>Our sommelier-curated wine list features over 300 selections, with an emphasis on small-production French vineyards and New World discoveries that complement our ever-evolving menu.</p>
+                    <a href="#reservations" class="btn">Join Us Tonight</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="starters">Starters</button>
+                <button class="menu-tab" data-tab="mains">Main Courses</button>
+                <button class="menu-tab" data-tab="desserts">Desserts</button>
+                <button class="menu-tab" data-tab="wine">Wine Pairings</button>
+            </div>
+            
+            <div class="menu-items" id="starters-menu">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Foie Gras Torchon</h3>
+                        <span class="menu-item-price">$28</span>
+                    </div>
+                    <p class="menu-item-desc">Smooth duck liver terrine with spiced pear compote, brioche toast, and port reduction.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Scallop Crudo</h3>
+                        <span class="menu-item-price">$24</span>
+                    </div>
+                    <p class="menu-item-desc">Dayboat scallops with blood orange, fennel, avocado, and a champagne vinaigrette.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Truffle Mushroom Tart</h3>
+                        <span class="menu-item-price">$22</span>
+                    </div>
+                    <p class="menu-item-desc">Wild mushroom medley with black truffle, goat cheese, and puff pastry.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Beetroot & Burrata</h3>
+                        <span class="menu-item-price">$20</span>
+                    </div>
+                    <p class="menu-item-desc">Roasted heirloom beets with creamy burrata, pistachio dust, and aged balsamic.</p>
+                </div>
+            </div>
+            
+            <div class="menu-items" id="mains-menu" style="display: none;">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Duck Confit</h3>
+                        <span class="menu-item-price">$42</span>
+                    </div>
+                    <p class="menu-item-desc">Slow-cooked duck leg with pommes purée, haricots verts, and cherry gastrique.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Halibut en Papillote</h3>
+                        <span class="menu-item-price">$46</span>
+                    </div>
+                    <p class="menu-item-desc">Atlantic halibut steamed in parchment with leeks, morels, and herb butter.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Wagyu Beef Tenderloin</h3>
+                        <span class="menu-item-price">$68</span>
+                    </div>
+                    <p class="menu-item-desc">Australian Wagyu with bone marrow crust, pommes dauphinoise, and red wine jus.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Wild Mushroom Risotto</h3>
+                        <span class="menu-item-price">$38</span>
+                    </div>
+                    <p class="menu-item-desc">Arborio rice with foraged mushrooms, white truffle oil, and Parmigiano-Reggiano.</p>
+                </div>
+            </div>
+            
+            <div class="menu-items" id="desserts-menu" style="display: none;">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Chocolate Soufflé</h3>
+                        <span class="menu-item-price">$18</span>
+                    </div>
+                    <p class="menu-item-desc">Warm dark chocolate soufflé with vanilla bean ice cream and cocoa nibs.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Crème Brûlée</h3>
+                        <span class="menu-item-price">$16</span>
+                    </div>
+                    <p class="menu-item-desc">Classic vanilla bean custard with caramelized sugar and seasonal berries.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Apple Tarte Tatin</h3>
+                        <span class="menu-item-price">$17</span>
+                    </div>
+                    <p class="menu-item-desc">Caramelized apple tart with puff pastry and calvados crème fraîche.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Cheese Selection</h3>
+                        <span class="menu-item-price">$24</span>
+                    </div>
+                    <p class="menu-item-desc">Artisanal French cheeses with house-made crackers, honey, and nuts.</p>
+                </div>
+            </div>
+            
+            <div class="menu-items" id="wine-menu" style="display: none;">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Champagne Flight</h3>
+                        <span class="menu-item-price">$45</span>
+                    </div>
+                    <p class="menu-item-desc">Three 2oz pours of premier cru Champagne from small producers.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Burgundy Reds</h3>
+                        <span class="menu-item-price">$18-32</span>
+                    </div>
+                    <p class="menu-item-desc">Selection of Pinot Noir from Côte de Nuits and Côte de Beaune.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Loire Valley Whites</h3>
+                        <span class="menu-item-price">$14-26</span>
+                    </div>
+                    <p class="menu-item-desc">Crisp Sauvignon Blanc and mineral-driven Chenin Blanc.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>Sommelier's Pairing</h3>
+                        <span class="menu-item-price">$75</span>
+                    </div>
+                    <p class="menu-item-desc">Five-course wine pairing curated to complement tonight's tasting menu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef Section -->
+    <section id="chef" class="chef">
+        <div class="container">
+            <div class="chef-content">
+                <div class="chef-text">
+                    <h2>Our Chef</h2>
+                    <p>Executive Chef Laurent Dubois brings over two decades of culinary expertise to Élysée. Born and trained in Lyon, France's gastronomic capital, Chef Dubois honed his craft under three-Michelin-starred chefs before bringing his vision to North America.</p>
+                    <p>His approach is defined by technical precision, respect for ingredients, and a passion for creating memorable dining experiences. Each dish is a balance of texture, temperature, and flavor, designed to surprise and delight.</p>
+                    <p>"Great cuisine should tell a story—of place, of season, of the hands that crafted it. At Élysée, we write that story anew each day."</p>
+                    <div class="chef-signature">– Laurent Dubois</div>
+                </div>
+                <div class="chef-img">
+                    <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Executive Chef Laurent Dubois">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Experience Élysée</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dining Room">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Plated Dish">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Wine Selection">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kitchen">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal">
+        <div class="lightbox-content">
+            <img src="" alt="Gallery Image">
+            <button class="lightbox-close"><i class="fas fa-times"></i></button>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservations Section -->
+    <section id="reservations" class="reservations">
+        <div class="container">
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <h2>Reservations</h2>
+                    <p>Experience an evening at Élysée. We recommend booking in advance to secure your preferred date and time.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>123 Gastronomy Avenue<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(212) 555-7890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>reservations@elyseerestaurant.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Hours</h4>
+                                <p>Tuesday - Sunday: 5:00 PM - 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reservation-form">
+                    <form id="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" class="form-control" required>
+                                <div class="error" id="name-error">Please enter your full name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-control" required>
+                                <div class="error" id="email-error">Please enter a valid email address</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Date *</label>
+                                <input type="date" id="date" class="form-control" required>
+                                <div class="error" id="date-error">Please select a date</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time *</label>
+                                <select id="time" class="form-control" required>
+                                    <option value="">Select a time</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="20:30">8:30 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                </select>
+                                <div class="error" id="time-error">Please select a time</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">Number of Guests *</label>
+                                <select id="guests" class="form-control" required>
+                                    <option value="">Select guests</option>
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5 People</option>
+                                    <option value="6">6 People</option>
+                                    <option value="7">7 People</option>
+                                    <option value="8">8 People</option>
+                                </select>
+                                <div class="error" id="guests-error">Please select number of guests</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="special-requests">Special Requests</label>
+                            <textarea id="special-requests" class="form-control" rows="3" placeholder="Dietary restrictions, celebrations, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-filled" style="width: 100%;">Reserve Table</button>
+                        <div class="form-success" id="form-success">
+                            Thank you for your reservation request! We will confirm your booking via email within 24 hours.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Élysée</div>
+                    <p>A modern French dining experience that honors tradition while embracing innovation. Join us for an unforgettable culinary journey.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#chef">Chef</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reservations">Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Hours</h3>
+                    <div class="hours-item">
+                        <span>Tuesday - Thursday</span>
+                        <span>5PM - 10PM</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Friday - Saturday</span>
+                        <span>5PM - 11PM</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Sunday</span>
+                        <span>5PM - 9PM</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Monday</span>
+                        <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Élysée Restaurant. All rights reserved. | Designed with passion for exceptional dining.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const header = document.getElementById('header');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // Menu Tabs
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuSections = {
+            starters: document.getElementById('starters-menu'),
+            mains: document.getElementById('mains-menu'),
+            desserts: document.getElementById('desserts-menu'),
+            wine: document.getElementById('wine-menu')
+        };
+        
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                menuTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all menu sections
+                Object.values(menuSections).forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show selected menu section
+                const tabId = tab.getAttribute('data-tab');
+                menuSections[tabId].style.display = 'grid';
+            });
+        });
+        
+        // Gallery Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightboxModal = document.querySelector('.lightbox-modal');
+        const lightboxImage = lightboxModal.querySelector('img');
+        const lightboxClose = lightboxModal.querySelector('.lightbox-close');
+        const lightboxPrev = lightboxModal.querySelector('.lightbox-prev');
+        const lightboxNext = lightboxModal.querySelector('.lightbox-next');
+        
+        let currentImageIndex = 0;
+        const galleryImages = Array.from(galleryItems).map(item => item.querySelector('img').src);
+        
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateLightboxImage();
+                lightboxModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        function updateLightboxImage() {
+            lightboxImage.src = galleryImages[currentImageIndex];
+        }
+        
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateLightboxImage();
+        }
+        
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightboxImage();
+        }
+        
+        lightboxClose.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        lightboxPrev.addEventListener('click', showPrevImage);
+        lightboxNext.addEventListener('click', showNextImage);
+        
+        // Close lightbox when clicking outside the image
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxModal.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else if (e.key === 'ArrowRight') {
+                showNextImage();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevImage();
+            }
+        });
+        
+        // Form Validation
+        const bookingForm = document.getElementById('booking-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const dateInput = document.getElementById('date');
+        const timeInput = document.getElementById('time');
+        const guestsInput = document.getElementById('guests');
+        const formSuccess = document.getElementById('form-success');
+        
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        
+        // Form validation function
+        function validateForm() {
+            let isValid = true;
+            
+            // Reset errors
+            document.querySelectorAll('.error').forEach(error => {
+                error.classList.remove('show');
+            });
+            
+            // Validate name
+            if (!nameInput.value.trim()) {
+                document.getElementById('name-error').classList.add('show');
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+                document.getElementById('email-error').classList.add('show');
+                isValid = false;
+            }
+            
+            // Validate date
+            if (!dateInput.value) {
+                document.getElementById('date-error').classList.add('show');
+                isValid = false;
+            }
+            
+            // Validate time
+            if (!timeInput.value) {
+                document.getElementById('time-error').classList.add('show');
+                isValid = false;
+            }
+            
+            // Validate guests
+            if (!guestsInput.value) {
+                document.getElementById('guests-error').classList.add('show');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // Form submission
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // In a real application, you would send the form data to a server
+                // For demo purposes, we'll just show a success message
+                formSuccess.classList.add('show');
+                bookingForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formSuccess.classList.remove('show');
+                }, 5000);
+            }
+        });
+        
+        // Real-time validation for inputs
+        [nameInput, emailInput, dateInput, timeInput, guestsInput].forEach(input => {
+            input.addEventListener('input', () => {
+                const errorId = input.id + '-error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize with today's date in the date field
+        window.addEventListener('DOMContentLoaded', () => {
+            // Set default date to tomorrow for better UX
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.valueAsDate = tomorrow;
+        });
+    </script>
+</body>
+</html>
