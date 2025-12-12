@@ -1,3 +1,5 @@
+Here's the updated README with the link added to the "Quick Start" section:
+
 # Élysée Restaurant Website
 
 A modern, responsive website template for a fine dining French restaurant with elegant design and full functionality.
@@ -33,16 +35,18 @@ A modern, responsive website template for a fine dining French restaurant with e
 
 ## 🚀 Quick Start
 
-1. **Clone or Download**
+1. **View Live Demo**: Check out the live version at [https://kingdomstack.github.io/-Restaurant-Website-HTML-CSS-JavaScript-Built-With-AI-/](https://kingdomstack.github.io/-Restaurant-Website-HTML-CSS-JavaScript-Built-With-AI-/)
+
+2. **Clone or Download**
    ```bash
    git clone [repository-url]
    ```
    or download the ZIP file
 
-2. **Open the File**
+3. **Open the File**
    Simply open `restaurant-website-template.html` in any modern web browser.
 
-3. **No Dependencies Required**
+4. **No Dependencies Required**
    - All CSS is included in the `<style>` tag
    - All JavaScript is included in the `<script>` tag
    - External resources are loaded via CDN (Font Awesome, Google Fonts)
@@ -184,17 +188,7 @@ This template is free to use for personal and commercial projects. Attribution i
 
 ## 🙏 Credits
 
-- Design and Development: [Your Name]
-- Images: Unsplash (attribution not required but appreciated)
+- Design and Development: KindomStack
+- Images: Unsplash 
 - Icons: Font Awesome
 - Fonts: Google Fonts
-
-## 📧 Support
-
-For questions, suggestions, or issues:
-- Open an issue in the GitHub repository
-- Or contact via email
-
----
-
-**Enjoy using the Élysée Restaurant Website Template!** 🍷
